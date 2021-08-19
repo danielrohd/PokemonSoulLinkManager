@@ -184,6 +184,8 @@ def delete_pair():
     # validates that selection was valid
     if 1 <= selection <= len(pairs):
         pairs.pop(selection-1)
+        if pairs[selection-1] in team_comp:
+            team_comp.remove(pairs[selection-1])
 
     write_file()
     display_main_menu()
@@ -198,7 +200,8 @@ def kill_pair():
     # validates that selection was valid
     if 1 <= selection <= len(pairs):
         pairs[selection-1]['Status'] = 'Dead'
-        team_comp.remove(pairs[selection-1])
+        if pairs[selection-1] in team_comp:
+            team_comp.remove(pairs[selection-1])
     write_file()
     display_main_menu()
 
